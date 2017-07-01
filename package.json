@@ -1,0 +1,27 @@
+{
+  "name": "casper",
+  "version": "1.0.0",
+  "main": "dist/app.js",
+  "author": "hekt <hektorg@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "serv": "node dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.66",
+    "@types/node": "^8.0.2",
+    "@types/restify": "^4.3.4",
+    "ts-loader": "^2.2.0",
+    "typescript": "^2.3.4",
+    "webpack": "^3.0.0",
+    "webpack-node-externals": "^1.6.0"
+  },
+  "dependencies": {
+    "botbuilder": "^3.8.4",
+    "lodash": "^4.17.4",
+    "restify": "git+https://github.com/hekt/node-restify#4.3.0-fix"
+  }
+}
