@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import * as Builder from 'botbuilder';
 import * as Restify from 'restify';
 
@@ -7,12 +8,21 @@ const connector = new Builder.ChatConnector({
 });
 const bot = new Builder.UniversalBot(connector);
 
-bot.dialog('/', (session) => {
-  session.send('hello');
-});
+bot.dialog('/', (session) => {});
 
+bot.dialog('/task', [
+  (session) => {
+    session.send('called');
+    session.endDialog();
+  },
+]).triggerAction({
+  matches: /^Reminder: dialog:task.$/
+})
+
+const port = 8080;
 const server = Restify.createServer();
-server.listen(3978, () => {
+server.listen(port, () => {
   console.log('%s listening to %s', server.name, server.url);
 });
 server.post('/api/messages', connector.listen());
+server.listen()

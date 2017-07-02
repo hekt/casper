@@ -6,14 +6,19 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack",
-    "watch": "webpack --watch",
-    "serv": "node dist/app.js",
+    "watch": "npm-run-all --parallel watch:*",
+    "watch:build": "webpack --watch",
+    "watch:server": "nodemon ./dist/app.js --watch ./dist",
+    "server": "node dist/app.js",
+    "daemon": "pm2 start ./dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.66",
     "@types/node": "^8.0.2",
     "@types/restify": "^4.3.4",
+    "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.2",
     "ts-loader": "^2.2.0",
     "typescript": "^2.3.4",
     "webpack": "^3.0.0",
@@ -22,6 +27,7 @@
   "dependencies": {
     "botbuilder": "^3.8.4",
     "lodash": "^4.17.4",
+    "pm2": "^2.5.0",
     "restify": "git+https://github.com/hekt/node-restify#4.3.0-fix"
   }
 }
