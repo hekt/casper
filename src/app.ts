@@ -1,6 +1,8 @@
 import * as _ from 'lodash';
 import * as Builder from 'botbuilder';
 import * as Restify from 'restify';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 const connector = new Builder.ChatConnector({
   appId: process.env.MSBF_APP_ID,
@@ -12,11 +14,15 @@ bot.dialog('/', (session) => {});
 
 bot.dialog('/task', [
   (session) => {
-    session.send('called');
+    session.send(
+      '%s said: %s',
+      session.message.address.user.name,
+      session.message.text
+    );
     session.endDialog();
   },
 ]).triggerAction({
-  matches: /^Reminder: dialog:task.$/
+  matches: /casper:task/
 })
 
 const port = 8080;

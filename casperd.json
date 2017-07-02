@@ -1,0 +1,4 @@
+{
+  "name": "casperd",
+  "script": "./dist/app.js"
+}
