@@ -1,0 +1,35 @@
+{
+  "lintOptions": {
+    "typeCheck": true
+  },
+  "extends": "tslint:all",
+  "rules": {
+    "no-console": false,
+    "no-unsafe-any": false,
+    "trailing-comma": [
+      true,
+      {
+        "multiline": {
+          "arrays": "always",
+          "objects": "alyaws",
+          "functions": "never",
+          "imports": "always",
+          "exports": "always",
+          "typeLiterals": "always"
+        },
+        "singleline": "never"
+      }
+    ],
+    "typedef": [
+      true,
+      "call-signature",
+      "arrow-call-signature",
+      "parameter",
+      "arrow-parameter",
+      "property-declaration",
+      "member-variable-declaration",
+      "object-destructuring",
+      "array-destructuring"
+    ]
+  }
+}

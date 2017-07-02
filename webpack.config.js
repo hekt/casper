@@ -19,8 +19,17 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js']
   },
   module: {
-    loaders: [
-      { test: /\.tsx?$/, loader: 'ts-loader' },
+    rules: [
+      {
+        test: /\.ts$/,
+        enforce: 'pre',
+        loader: 'tslint-loader',
+        options: {
+          tsConfigFile: 'tsconfig.json',
+          typeCheck: true,
+        }
+      },
+      { test: /\.ts$/, loader: 'ts-loader' },
     ]
   },
 };

@@ -24,6 +24,8 @@
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
     "ts-loader": "^2.2.0",
+    "tslint": "^5.4.3",
+    "tslint-loader": "^3.5.3",
     "typescript": "^2.3.4",
     "webpack": "^3.0.0",
     "webpack-node-externals": "^1.6.0"

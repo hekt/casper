@@ -1,34 +1,36 @@
-import * as _ from 'lodash';
-import * as Builder from 'botbuilder';
-import * as Restify from 'restify';
-import * as dotenv from 'dotenv';
+import * as Builder from "botbuilder";
+import * as dotenv from "dotenv";
+import * as Restify from "restify";
+
 dotenv.config();
 
-const connector = new Builder.ChatConnector({
+const connector: Builder.ChatConnector = new Builder.ChatConnector({
   appId: process.env.MSBF_APP_ID,
-  appPassword: process.env.MSBF_APP_PASSWORD
+  appPassword: process.env.MSBF_APP_PASSWORD,
 });
-const bot = new Builder.UniversalBot(connector);
+const bot: Builder.UniversalBot = new Builder.UniversalBot(connector);
 
-bot.dialog('/', (session) => {});
+bot.dialog("/", (session: Builder.Session): void => {
+  console.log("root dialog");
+});
 
-bot.dialog('/task', [
-  (session) => {
+bot.dialog("/task", [
+  (session: Builder.Session): void => {
     session.send(
-      '%s said: %s',
+      "%s said: %s",
       session.message.address.user.name,
       session.message.text
     );
     session.endDialog();
   },
 ]).triggerAction({
-  matches: /casper:task/
-})
+  matches: /casper:task/,
+});
 
 const port = 8080;
 const server = Restify.createServer();
 server.listen(port, () => {
-  console.log('%s listening to %s', server.name, server.url);
+  console.log("%s listening to %s", server.name, server.url);
 });
-server.post('/api/messages', connector.listen());
-server.listen()
+server.post("/api/messages", connector.listen());
+server.listen();
